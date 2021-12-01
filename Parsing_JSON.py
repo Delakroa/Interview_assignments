@@ -1,11 +1,23 @@
 import openpyxl
+import json
 
-book = openpyxl.Workbook()
+with open('test1.json') as file:
+    data = json.load(file)
+for header in data['headers']:
+    # text = header['Name']
 
-sheet = book.active
+    print(header)
 
-sheet['A2'] = 100
-sheet['B3'] = 'hello'
 
-book.save("my_book.xlsx")
-book.close()
+# print(data['headers'])
+# print(data['values'])
+
+# book = openpyxl.Workbook()
+#
+# sheet = book.active
+#
+# sheet['A2'] = 100
+# sheet['B3'] = 'hello'
+#
+# book.save("my_book.xlsx")
+# book.close()
