@@ -4,9 +4,9 @@ import json
 with open('test1.json') as file:
     data = json.load(file)
 for header in data['headers']:
-    # text = header['Name']
-
-    print(header)
+    text = header['properties']
+    Id = text['Width']
+    print(Id)
 
 
 # print(data['headers'])
