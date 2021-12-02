@@ -1,50 +1,49 @@
 import openpyxl
 import json
 
-with open('test1.json') as file:
+with open('test1.json', encoding='utf-8') as file:
     data = json.load(file)
 for header in data['headers']:
     text = header['properties']
-    Id = text['Id']
-    Name = text['Name']
-    Sid = text['Sid']
-    Enabled = text['Enabled']
-    X = text['X']
-    Y = text['Y']
-    Width = text['Width']
-    Height = text['Height']
-    # print(type(text))
-    print(Id, Name, Sid, Enabled, X, Y, Width, Height)
+    QuickInfo = text['QuickInfo']
+
+    # print(type(QuickInfo))
+    print(QuickInfo)
 
 # Создаём рабочую книгу
 book = openpyxl.Workbook()
+# По умолчанию создаётся с таблицей Sheet
+# print(book.sheetnames)
+book.remove(book.active)
 
 # Позиционирование на конкретном листе
 # в который мы осуществляем запись
-sheet = book.active  # по умолчанию это первый лист
+sheet_2 = book.create_sheet('Лист2')  # по умолчанию это первый лист
+sheet_1 = book.create_sheet('Лист1')
+sheet_3 = book.create_sheet('Лист3')
 
 # Обращение к координатам ячейки
-sheet['A1'] = 'ID'
-sheet['B1'] = 'NAME'
-sheet['C1'] = 'SID'
-sheet['D1'] = 'ENABLED'
-sheet['E1'] = 'X'
-sheet['F1'] = 'Y'
-sheet['G1'] = 'WIDTH'
-sheet['H1'] = 'HEIGHT'
+sheet_1['A1'] = QuickInfo[:]
+sheet_1['B1'] = QuickInfo
+sheet_1['C1'] = QuickInfo
+sheet_1['D1'] = QuickInfo
+sheet_1['E1'] = QuickInfo
+sheet_1['F1'] = QuickInfo
+sheet_1['G1'] = QuickInfo
+sheet_1['H1'] = QuickInfo
 
 row = 2
 for header in data['headers']:
     text = header['properties']
     # Обращение по координатам [ряд][колонка]
-    sheet[row][0].value = text['Id']
-    sheet[row][1].value = text['Name']
-    sheet[row][2].value = text['Sid']
-    sheet[row][3].value = text['Enabled']
-    sheet[row][4].value = text['X']
-    sheet[row][5].value = text['Y']
-    sheet[row][6].value = text['Width']
-    sheet[row][7].value = text['Height']
+    sheet_1[row][0].value = text['Id']
+    sheet_1[row][1].value = text['Name']
+    sheet_1[row][2].value = text['Sid']
+    sheet_1[row][3].value = text['Enabled']
+    sheet_1[row][4].value = text['X']
+    sheet_1[row][5].value = text['Y']
+    sheet_1[row][6].value = text['Width']
+    sheet_1[row][7].value = text['Height']
     row += 1
 
 
