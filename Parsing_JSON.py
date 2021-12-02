@@ -3,12 +3,13 @@ import json
 
 with open('test1.json', encoding='utf-8') as file:
     data = json.load(file)
+row = []
 for header in data['headers']:
     text = header['properties']
     QuickInfo = text['QuickInfo']
+    row.append(QuickInfo)
+    # print(type(row))
 
-    # print(type(QuickInfo))
-    print(QuickInfo)
 
 # Создаём рабочую книгу
 book = openpyxl.Workbook()
@@ -18,34 +19,26 @@ book.remove(book.active)
 
 # Позиционирование на конкретном листе
 # в который мы осуществляем запись
-sheet_2 = book.create_sheet('Лист2')  # по умолчанию это первый лист
-sheet_1 = book.create_sheet('Лист1')
+sheet_1 = book.create_sheet('Лист1')  # по умолчанию это первый лист
+sheet_2 = book.create_sheet('Лист2')
 sheet_3 = book.create_sheet('Лист3')
 
 # Обращение к координатам ячейки
-sheet_1['A1'] = QuickInfo[:]
-sheet_1['B1'] = QuickInfo
-sheet_1['C1'] = QuickInfo
-sheet_1['D1'] = QuickInfo
-sheet_1['E1'] = QuickInfo
-sheet_1['F1'] = QuickInfo
-sheet_1['G1'] = QuickInfo
-sheet_1['H1'] = QuickInfo
+sheet_1['A1'] = str(row[0:1])
+sheet_1['B1'] = str(row[1:2])
+sheet_1['C1'] = str(row[2:3])
+sheet_1['D1'] = str(row[3:4])
 
-row = 2
+
+rows = 2
 for header in data['headers']:
     text = header['properties']
     # Обращение по координатам [ряд][колонка]
-    sheet_1[row][0].value = text['Id']
-    sheet_1[row][1].value = text['Name']
-    sheet_1[row][2].value = text['Sid']
-    sheet_1[row][3].value = text['Enabled']
-    sheet_1[row][4].value = text['X']
-    sheet_1[row][5].value = text['Y']
-    sheet_1[row][6].value = text['Width']
-    sheet_1[row][7].value = text['Height']
-    row += 1
-
+    sheet_1[rows][0].value = text['Id']
+    sheet_1[rows][1].value = text['Name']
+    sheet_1[rows][2].value = text['Sid']
+    sheet_1[rows][3].value = text['Enabled']
+    rows += 1
 
 # Чтобы изменения вступили в силу
 # сохраняем книгу
