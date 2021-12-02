@@ -28,7 +28,14 @@ sheet_1['A1'] = str(row[0:1])
 sheet_1['B1'] = str(row[1:2])
 sheet_1['C1'] = str(row[2:3])
 sheet_1['D1'] = str(row[3:4])
-
+sheet_2['A1'] = str(row[0:1])
+sheet_2['B1'] = str(row[1:2])
+sheet_2['C1'] = str(row[2:3])
+sheet_2['D1'] = str(row[3:4])
+sheet_3['A1'] = str(row[0:1])
+sheet_3['B1'] = str(row[1:2])
+sheet_3['C1'] = str(row[2:3])
+sheet_3['D1'] = str(row[3:4])
 
 rows = 2
 for header in data['headers']:
