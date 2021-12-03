@@ -59,21 +59,22 @@ for header3 in json_data3['values']:
     text3 = header3['properties']
     data_samples3 = text3['Text']
     data_sample3.append(data_samples3)
-    # print(data_sample3)
-    # Обращение по координатам [ряд][колонка]
-    sheet_1[rows][0].value = str(data_sample[0:1])
-    sheet_1[rows][1].value = str(data_sample[2:3])
-    sheet_1[rows][2].value = str(data_sample[4:5])
-    sheet_1[rows][3].value = str(data_sample[6:7])
-    sheet_2[rows][0].value = str(data_sample2[0:1])
-    sheet_2[rows][1].value = str(data_sample2[2:3])
-    sheet_2[rows][2].value = str(data_sample2[4:5])
-    sheet_2[rows][3].value = str(data_sample2[6:7])
-    sheet_3[rows][0].value = str(data_sample3[0:1])
-    sheet_3[rows][1].value = str(data_sample3[2:3])
-    sheet_3[rows][2].value = str(data_sample3[4:5])
-    sheet_3[rows][3].value = str(data_sample3[6:7])
-    rows += 1
+print(data_sample3)
+
+# Обращение по координатам [ряд][колонка]
+sheet_1[rows][0].value = str(data_sample[0:1])
+sheet_1[rows][1].value = str(data_sample[2:3])
+sheet_1[rows][2].value = str(data_sample[4:5])
+sheet_1[rows][3].value = str(data_sample[6:7])
+sheet_2[rows][0].value = str(data_sample2[0:1])
+sheet_2[rows][1].value = str(data_sample2[2:3])
+sheet_2[rows][2].value = str(data_sample2[4:5])
+sheet_2[rows][3].value = str(data_sample2[6:7])
+sheet_3[rows][0].value = str(data_sample3[0:1])
+sheet_3[rows][1].value = str(data_sample3[2:3])
+sheet_3[rows][2].value = str(data_sample3[4:5])
+sheet_3[rows][3].value = str(data_sample3[6:7])
+rows += 1
 
 # Чтобы изменения вступили в силу
 # сохраняем книгу
