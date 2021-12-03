@@ -1,6 +1,7 @@
-import openpyxl
+import openpyxl  # pip install openpyxl
 import json
 
+# Открываем, загружаем JSON
 json_data = json.load(open('test1.json', encoding='utf-8'))
 json_data2 = json.load(open('test2.json', encoding='utf-8'))
 json_data3 = json.load(open('test3.json', encoding='utf-8'))
