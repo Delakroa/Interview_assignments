@@ -40,4 +40,7 @@ parse()
 # <ul class="ontop" id="uni_select_4" style="top: 36px; width: 669px; display: none;">
 # <li data-index="0" data-code="" class=""><b></b></li><li data-index="1" data-code="40909000" class=""><b>
 # </b>40909000 - муниципальный округ №78</li>
+
 # <li data-index="2" data-code="40913000" class=""><b></b>40913000 - муниципальный округ Владимирский округ</li></ul>
+
+# <button type="submit" id="btnNext" class="btn-next">Далее</button>
