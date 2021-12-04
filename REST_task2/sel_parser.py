@@ -20,6 +20,11 @@ sleep(3)
 input_tab = driver.find_element_by_class_name("no-data")
 input_tab.click()
 sleep(3)
-button = ('#txtFilter')
+button = driver.find_element_by_css_selector('#txtFilter').click()
 print(button.text)
 button.send_keys('7840')
+
+
+
+
+
