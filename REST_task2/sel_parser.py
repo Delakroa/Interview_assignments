@@ -31,6 +31,13 @@ button = driver.find_element_by_class_name('btn-node')
 button.click()
 
 
-
+# Class name (Имя класса)
+# CSS Selector
+# ID
+# Link text (текст ссылки)
+# Name (имя)
+# Partial link text (частичный текст ссылки)
+# Tag name (название тэга)
+# XPath
 
 
