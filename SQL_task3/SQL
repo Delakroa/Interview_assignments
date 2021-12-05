@@ -1,0 +1,56 @@
+1)	Список клиентов с общей суммой их покупок
+
+
+select clt.[user_name] as [Клиент]
+, sum(prod.price) as [Общая сумма покупок]
+from Orders as ord
+inner join Clients as clt
+on clt.id_user = ord.id_users
+inner join Products as prod
+on prod.id_product = ord.id_product
+GROUP BY clt.[user_name]
+
+
+2)	Список клиентов, которые купили телефон
+
+
+select clt.[user_name] as [Клиент]
+from Orders as ord
+inner join Clients as clt
+on clt.id_user = ord.id_users
+inner join Products as prod
+on prod.id_product = ord.id_product
+where prod.id_product = 5 —телефон, по ключу быстрее
+--prod.product_name = 'Телефон' — или по наименованию
+GROUP BY clt.[user_name]
+
+
+3)	Список товаров с количеством их заказов
+
+
+Первый варинат:
+
+select product_name as [Товар]
+, count(*) as [Количество заказов]
+from (
+select prod.product_name, ord.Order_name
+from Orders as ord
+inner join Products as prod
+on prod.id_product = ord.id_product
+GROUP BY prod.product_name, ord.Order_name
+) t
+GROUP BY product_name
+
+
+Второй варинат:
+
+select prod.product_name, sum(t.[sum])
+from Products as prod
+cross apply
+(
+select count(*) as [sum]
+from Orders as ord
+where id_product = prod.id_product
+group by ord.id_Order
+) t
+group by product_name
