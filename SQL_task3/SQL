@@ -54,3 +54,12 @@ where id_product = prod.id_product
 group by ord.id_Order
 ) t
 group by product_name
+
+
+Третий варинат:
+
+select prod.product_name, COUNT(distinct ord.id_order)
+from Orders as ord
+inner join Products as prod
+on prod.id_product = ord.id_product
+GROUP BY prod.product_name]
