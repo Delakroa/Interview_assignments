@@ -128,3 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /Parsing_task_version2/salaries.xlsx
+salaries.xlsx
