@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 /Parsing_task_version2/salaries.xlsx
 salaries.xlsx
+/.vscode/settings.json

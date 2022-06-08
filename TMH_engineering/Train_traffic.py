@@ -24,7 +24,7 @@
 class TrainSchedule:
     """Создание класса расписания поездов"""
 
-    def __init__(self, distance, speed, point) -> None:
+    def __init__(self, distance, speed, point):
         self.distance = distance
         self.speed = speed
         self.point = point
@@ -73,8 +73,7 @@ def arrival_time(d_time):
     try:
         a_time = int(input("Установите время прибытия поезда в формате: "))
         if a_time <= d_time:
-            print(
-                "Неверный ввод данных. Время прибытия не может быть меньше времени отправления")
+            print("Неверный ввод данных. Время прибытия не может быть меньше времени отправления")
         else:
             return print(f"Указанное время прибытия {a_time}")
 
@@ -87,7 +86,7 @@ def travel_time(distance, speed):
     try:
         time = float(distance / speed)  # Время = расстояние / скорость
         if time <= 0:
-            return print("Неверный вариант ввода данных: Дистанция не может быть нулевым начением")
+            return print("Неверный вариант ввода данных: Дистанция не может быть нулевым значением")
 
         elif distance == 1:
             return print(f"Время прибытия {time * 60} минуты")
