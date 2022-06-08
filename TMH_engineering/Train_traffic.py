@@ -36,7 +36,7 @@ def control_point():
     try:
         point = int(input("Введите номер пункта отправления (Один из четырёх) "))
         if point > 4 or point <= 0:
-            return print("Неверное значение пункта. Их всего четыре. ")
+            print("Неверное значение пункта. Их всего четыре. ")
         return print(f"Выбран пункт оправления {point}")
 
     except ValueError:
@@ -50,22 +50,19 @@ def departure_time():
 
         while True:
             d_time_hour = int(input("Введите часы: "))
-
             if d_time_hour > 24 or d_time_hour <= 0:
-                print("Неверный ввод часов.")
-                return int(input("Введите часы: "))
+                print("Некорректный ввод часов.")
+                break
 
-            else:
-                d_time_minutes = int(input("Введите минуты: "))
+            d_time_minutes = int(input("Введите минуты: "))
+            if d_time_minutes > 59 or d_time_minutes <= -1:
+                print("Некорректный ввод минут.")
+                break
 
-                if d_time_minutes > 59 or d_time_minutes <= 0:
-                    print("Неверный ввод минут.")
-                    return int(input("Введите минуты: "))
-
-            return print(f"Время отправления {d_time_hour}:{d_time_minutes}")
+            return print(f"Время отправления {d_time_hour}ч:{d_time_minutes}мин")
 
     except ValueError:
-        print("Неверный ввод. Введите числовое значение")
+        print("Некорректный ввод. Введите числовое значение")
 
 
 def arrival_time(d_time):
@@ -94,7 +91,7 @@ def travel_time(distance, speed):
         else:
             return print(f"Расчётное время прибытие: {time} часа.")
     except ZeroDivisionError:
-        return print(f"Скорость не может быть нулевым значением!")
+        return print("Скорость не может быть нулевым значением!")
 
 
 def parking_time():
