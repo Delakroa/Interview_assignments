@@ -11,10 +11,9 @@ from selenium.common.exceptions import NoSuchElementException
 from bs4 import BeautifulSoup
 from time import sleep
 from selenium import webdriver
-from webdriver_manager.firefox import GeckoDriverManager
 
 
-driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
+driver = webdriver.Chrome(executable_path=)
 url = 'https://service.nalog.ru/addrno.do'
 driver.get(url)
 
