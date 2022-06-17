@@ -2,29 +2,28 @@
 # pip install selenium
 # pip install notebook
 # pip install bs4
+import pytest
 from selenium import webdriver
-from test.link import *
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from link import *
+
 
 def test_get():
-    driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+    pytest.driver = webdriver.Chrome(executable_path=DRIVER_PATH)
 
-    driver.implicitly_wait(10)  # Неявное ожидание
+    pytest.driver.implicitly_wait(20)  # Неявное ожидание
+    wait = WebDriverWait(pytest.driver, 20)
+    pytest.driver.get(FNS_RUSSIA)
 
-    driver.get('https://service.nalog.ru/addrno.do')
+    pytest.driver.find_element_by_class_name("no-data").click()
 
-    input_tab = driver.find_element_by_class_name("no-data").click()
-    # input_tab.click()
+    # assert pytest.driver.find_element(By.TAG_NAME, 'span').text == "Код ИФНС"
 
+    # Варианты тегов: CSS
+    # 'input[id="txtFilter"]' 'input[class="hidden.inp-std"]'  'input#txtFilter.hidden.inp-std'
+    input_region = wait.until(EC.presence_of_all_elements_located((By.XPATH, '//*[@id="txtFilter"]'))).click()
+    input_region.send_keys('7840')
 
-    button = driver.find_element_by_class_name('btn-node')
-    # button.send_key('7840')
-    button.click()
-
-# Class name (Имя класса)
-# CSS Selector
-# ID
-# Link text (текст ссылки)
-# Name (имя)
-# Partial link text (частичный текст ссылки)
-# Tag name (название тэга)
-# XPath
+    pytest.driver.quit()
