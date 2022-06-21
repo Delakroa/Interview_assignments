@@ -1,5 +1,4 @@
 import json
-import openpyxl
 import pandas as pd
 
 with open("z:/Л И Ч К А/Халиков Д. Г/Python_ТЗ/test1.json", "r", encoding="utf-8") as file1_json:
