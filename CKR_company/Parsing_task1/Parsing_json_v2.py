@@ -62,11 +62,10 @@ def creation_sheets():
     # Создание worksheet
     salary_sheets = {'Лист1': salaries1,
                      'Лист2': salaries2, 'Лист3': salaries3}
-    writer = pd.ExcelWriter('./salaries.xlsx', engine='xlsxwriter')
+    writer = pd.ExcelWriter('./salaries.xlsx', engine='xlsxwriter') 
 
     for sheet_name in salary_sheets.keys():
-        salary_sheets[sheet_name].to_excel(
-            writer, sheet_name=sheet_name, index=False)
+        salary_sheets[sheet_name].to_excel(writer, sheet_name=sheet_name, index=False)
     return writer
 
 
