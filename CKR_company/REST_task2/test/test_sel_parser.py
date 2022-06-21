@@ -1,7 +1,4 @@
-# pip install webdriver-manager
-# pip install selenium
-# pip install notebook
-# pip install bs4
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
