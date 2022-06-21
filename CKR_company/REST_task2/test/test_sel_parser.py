@@ -1,4 +1,3 @@
-
 import pytest
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
@@ -8,6 +7,7 @@ from link import *
 
 
 def test_get():
+    """Вход на сайт"""
     pytest.driver = webdriver.Chrome(executable_path=DRIVER_PATH)
 
     pytest.driver.implicitly_wait(20)  # Неявное ожидание
@@ -20,7 +20,8 @@ def test_get():
 
     # Варианты тегов: CSS
     # 'input[id="txtFilter"]' 'input[class="hidden.inp-std"]'  'input#txtFilter.hidden.inp-std'
-    input_region = wait.until(EC.presence_of_all_elements_located((By.XPATH, '//*[@id="txtFilter"]'))).click()
+    input_region = wait.until(EC.presence_of_all_elements_located(
+        (By.XPATH, '//*[@id="txtFilter"]'))).click()
     input_region.send_keys('7840')
 
     pytest.driver.quit()
