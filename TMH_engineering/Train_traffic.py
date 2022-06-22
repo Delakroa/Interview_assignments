@@ -29,36 +29,40 @@ def control_point():
 
 def departure_time():
     "Установка времени отправления"
-    try:
-        print("Укажите время отправления поезда")
+    while True:
+        try:
+            print("Укажите время отправления поезда")
 
-        d_time_hour = int(input("Введите часы: "))
-        if d_time_hour > 24 or d_time_hour <= 0:
-            print("Некорректный ввод часов.")
+            d_time_hour = int(input("Введите часы: "))
+            if d_time_hour > 24 or d_time_hour <= 0:
+                print("Некорректный ввод часов.\n")
 
-        else:
-            d_time_minutes = int(input("Введите минуты: "))
-            if d_time_minutes > 59 or d_time_minutes <= 0:
-                print("Некорректный ввод минут.")
+            else:
+                d_time_minutes = int(input("Введите минуты: "))
+                if d_time_minutes > 59 or d_time_minutes <= 0:
+                    print("Некорректный ввод минут.\n")
 
-        return print(f"Время отправления {d_time_hour}:{d_time_minutes}")
+                else:
+                    print(f"\nВремя отправления поезда {d_time_hour}ч. : {d_time_minutes}мин.\n")
+                    return d_time_hour
 
-    except ValueError:
-        print("Некорректный ввод. Введите числовое значение")
+        except ValueError:
+            print("Некорректный ввод. Введите числовое значение\n")
 
 
-def arrival_time(d_time):
+def arrival_time():
     """Установка времени прибытия"""
-    try:
-        a_time = int(input("Установите время прибытия поезда в формате: "))
-        if a_time <= d_time:
-            print(
-                "Неверный ввод данных. Время прибытия не может быть меньше времени отправления")
-        else:
-            return print(f"Указанное время прибытия {a_time}")
+    while True:
+        try:
+            a_time = int(input("Установите время прибытия поезда в формате: "))
+            if a_time <= departure_time():
+                print(
+                    "Неверный ввод данных. Время прибытия не может быть меньше времени отправления")
+            else:
+                return print(f"Указанное время прибытия {a_time}")
 
-    except ValueError:
-        print("Неверный ввод. Введите числовое значение")
+        except ValueError:
+            print("Неверный ввод. Введите числовое значение")
 
 
 def travel_time(distance, speed):
@@ -82,7 +86,7 @@ def travel_time(distance, speed):
 #     pass
 
 
-control_point()
-# departure_time()
+# control_point()
+departure_time()
+# arrival_time()
 # travel_time(1, 0)
-# arrival_time(5)
