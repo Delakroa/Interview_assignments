@@ -3,16 +3,17 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from link import *
+from link import Link
 
+lk = Link()
 
 def test_get():
     """Вход на сайт"""
-    pytest.driver = webdriver.Chrome(executable_path=DRIVER_PATH)
+    pytest.driver = webdriver.Chrome(executable_path=lk.driver_chrome)
 
     pytest.driver.implicitly_wait(20)  # Неявное ожидание
     wait = WebDriverWait(pytest.driver, 20)
-    pytest.driver.get(FNS_RUSSIA)
+    pytest.driver.get(lk.fns_russia)
 
     pytest.driver.find_element_by_class_name("no-data").click()
 
