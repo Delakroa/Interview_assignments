@@ -35,12 +35,12 @@ class TrainSchedule:
                 print("Укажите время отправления поезда")
 
                 d_time_hour = int(input("Введите часы: "))
-                if d_time_hour > 24 or d_time_hour <= 0:
+                if d_time_hour > 24 or d_time_hour < 0:
                     print("Некорректный ввод часов.\n")
 
                 else:
                     d_time_minutes = int(input("Введите минуты: "))
-                    if d_time_minutes > 59 or d_time_minutes <= 0:
+                    if d_time_minutes > 59 or d_time_minutes < 0:
                         print("Некорректный ввод минут.\n")
 
                     else:
@@ -57,17 +57,16 @@ class TrainSchedule:
                 print("Установите время прибытия поезда")
 
                 a_time_hour = int(input("Установите часы: "))
-                if a_time_hour > 24 or a_time_hour <= 0:
+                if a_time_hour > 24 or a_time_hour < 0:
                     print("Некорректный ввод часов.\n")
 
                 else:
                     a_time_minutes = int(input("Установите минуты: "))
-                    if a_time_minutes > 59 or a_time_minutes <= 0:
+                    if a_time_minutes > 59 or a_time_minutes < 0:
                         print("Некорректный ввод минут.\n")
 
                     else:
-                        print(
-                            f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
+                        print(f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
                         # Время отправленя не может быть < времени прибытия.
                         if self.departure_time() <= a_time_hour:
                             print("Неверный ввод данных. Время прибытия не может быть меньше времени отправления!\n")
