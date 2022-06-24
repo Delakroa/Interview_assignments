@@ -1,7 +1,13 @@
 """Выполнение задания ТМХ"""
 
+<<<<<<< HEAD
 class TrainSchedule:
     """Создание класса расписания поездов"""
+=======
+
+# class TrainSchedule:
+#     """Создание класса расписания поездов"""
+>>>>>>> 50bd1133feb00e867df7bae440d83ff913bca2e4
 
     def __init__(self):
         "Инициализация атрибутов класса"
@@ -13,6 +19,7 @@ class TrainSchedule:
         # Установка времени брибытия
         
 
+<<<<<<< HEAD
     def control_point(self):
         """Установка пункта отправления"""
         while True:
@@ -20,6 +27,40 @@ class TrainSchedule:
                 point = int(input("Введите номер пункта отправления (Один из четырёх) : "))
                 if point > 4 or point <= 0:
                     print("Неверное значение пункта. Их всего четыре. \n")
+=======
+
+def control_point():
+    """Установка пункта отправления"""
+    while True:
+        try:
+            point = int(
+                input("Введите номер пункта отправления (Один из четырёх) : "))
+            if point > 4 or point <= 0:
+                print("Неверное значение пункта. Их всего четыре. \n")
+
+            else:
+                print(f"Выбран пункт оправления {point}")
+                break
+
+        except ValueError:
+            print("Неверный ввод. Введите числовое значение\n")
+
+
+def departure_time():
+    """Установка времени отправления"""
+    while True:
+        try:
+            print("Укажите время отправления поезда")
+
+            d_time_hour = int(input("Введите часы: "))
+            if d_time_hour > 24 or d_time_hour <= 0:
+                print("Некорректный ввод часов.\n")
+
+            else:
+                d_time_minutes = int(input("Введите минуты: "))
+                if d_time_minutes > 59 or d_time_minutes <= 0:
+                    print("Некорректный ввод минут.\n")
+>>>>>>> 50bd1133feb00e867df7bae440d83ff913bca2e4
 
                 else:
                     print(f"Выбран пункт оправления {point}\n")
