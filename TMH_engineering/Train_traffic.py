@@ -1,13 +1,8 @@
 """Выполнение задания ТМХ"""
 
-<<<<<<< HEAD
+
 class TrainSchedule:
     """Создание класса расписания поездов"""
-=======
-
-# class TrainSchedule:
-#     """Создание класса расписания поездов"""
->>>>>>> 50bd1133feb00e867df7bae440d83ff913bca2e4
 
     def __init__(self):
         "Инициализация атрибутов класса"
@@ -17,58 +12,21 @@ class TrainSchedule:
         # self.d_time_hour = int(input("Введите часы: "))
         # self.d_time_minutes = int(input("Введите минуты: "))
         # Установка времени брибытия
-        
 
-<<<<<<< HEAD
     def control_point(self):
         """Установка пункта отправления"""
         while True:
             try:
-                point = int(input("Введите номер пункта отправления (Один из четырёх) : "))
+                point = int(
+                    input("Введите номер пункта отправления (Один из четырёх) : "))
                 if point > 4 or point <= 0:
                     print("Неверное значение пункта. Их всего четыре. \n")
-=======
-
-def control_point():
-    """Установка пункта отправления"""
-    while True:
-        try:
-            point = int(
-                input("Введите номер пункта отправления (Один из четырёх) : "))
-            if point > 4 or point <= 0:
-                print("Неверное значение пункта. Их всего четыре. \n")
-
-            else:
-                print(f"Выбран пункт оправления {point}")
-                break
-
-        except ValueError:
-            print("Неверный ввод. Введите числовое значение\n")
-
-
-def departure_time():
-    """Установка времени отправления"""
-    while True:
-        try:
-            print("Укажите время отправления поезда")
-
-            d_time_hour = int(input("Введите часы: "))
-            if d_time_hour > 24 or d_time_hour <= 0:
-                print("Некорректный ввод часов.\n")
-
-            else:
-                d_time_minutes = int(input("Введите минуты: "))
-                if d_time_minutes > 59 or d_time_minutes <= 0:
-                    print("Некорректный ввод минут.\n")
->>>>>>> 50bd1133feb00e867df7bae440d83ff913bca2e4
 
                 else:
-                    print(f"Выбран пункт оправления {point}\n")
+                    print(f"Выбран пункт оправления {point}")
                     break
-
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
-
 
     def departure_time(self):
         "Установка времени отправления"
@@ -87,11 +45,10 @@ def departure_time():
 
                     else:
                         print(f"\nВремя отправления поезда {d_time_hour}ч. : {d_time_minutes}мин.\n")
-                        return  d_time_hour
+                        return d_time_hour
 
             except ValueError:
                 print("Некорректный ввод. Введите числовое значение\n")
-
 
     def arrival_time(self):
         """Установка времени прибытия"""
@@ -109,7 +66,8 @@ def departure_time():
                         print("Некорректный ввод минут.\n")
 
                     else:
-                        print(f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
+                        print(
+                            f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
                         # Время отправленя не может быть < времени прибытия.
                         if self.departure_time() <= a_time_hour:
                             print("Неверный ввод данных. Время прибытия не может быть меньше времени отправления!\n")
@@ -119,13 +77,13 @@ def departure_time():
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
-
     def travel_time(self, distance, speed):
         """Расчёт времени в пути"""
         try:
             time = float(distance / speed)  # Время = расстояние / скорость
             if time <= 0:
-                print("Неверный вариант ввода данных: Дистанция не может быть нулевым значением")
+                print(
+                    "Неверный вариант ввода данных: Дистанция не может быть нулевым значением")
 
             elif distance == 1:
                 print(f"Время прибытия {time * 60} минуты")
@@ -134,7 +92,6 @@ def departure_time():
                 return print(f"Расчётное время прибытие: {time} часа.")
         except ZeroDivisionError:
             print("Скорость не может быть нулевым значением!")
-
 
     # def parking_time(self):
     #     """Расчёт времени стоянки"""
