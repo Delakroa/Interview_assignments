@@ -11,8 +11,7 @@ class TrainSchedule:
         """Установка пункта отправления"""
         while True:
             try:
-                point = int(
-                    input("Введите номер пункта отправления (Один из четырёх) : "))
+                point = int(input("Введите номер пункта отправления (Один из четырёх) : "))
                 if point > 4 or point <= 0:
                     print("Неверное значение пункта. Их всего четыре. \n")
 
@@ -28,8 +27,7 @@ class TrainSchedule:
             try:
                 print("Укажите время отправления поезда")
 
-                d_time_hour, d_time_minutes = map(int, input(
-                    "Введите часы и минуты через пробел: ").split())
+                d_time_hour, d_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
 
                 if d_time_hour > 24 or d_time_hour < 0:
                     print("Некорректный ввод часов.\n")
@@ -38,8 +36,7 @@ class TrainSchedule:
                     print("Некорректный ввод минут.\n")
 
                 else:
-                    print(
-                        f"\nВремя отправления поезда {d_time_hour}ч. : {d_time_minutes}мин.\n")
+                    print(f"\nВремя отправления поезда {d_time_hour}ч. : {d_time_minutes}мин.\n")
                     return d_time_hour
 
             except ValueError:
@@ -51,8 +48,7 @@ class TrainSchedule:
             try:
                 print("Установите время прибытия поезда")
 
-                a_time_hour, a_time_minutes = map(
-                    int, input("Введите часы и минуты через пробел: ").split())
+                a_time_hour, a_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
 
                 if a_time_hour > 24 or a_time_hour < 0:
                     print("Некорректный ввод часов.\n")
