@@ -7,16 +7,16 @@ class TrainSchedule:
     def __init__(self):
         """Инициализация атрибут"""
 
-    def control_point(self):
+    def point_of_departure(self):
         """Установка пункта отправления"""
         while True:
             try:
-                point = int(input("Введите номер пункта отправления (Один из четырёх) : "))
-                if point > 4 or point <= 0:
+                point_departure = int(input("Введите номер пункта отправления (Один из четырёх) : "))
+                if point_departure > 4 or point_departure <= 0:
                     print("Неверное значение пункта. Их всего четыре. \n")
 
                 else:
-                    print(f"Выбран пункт оправления {point}")
+                    print(f"Выбран пункт оправления {point_departure}")
                     break
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
@@ -68,8 +68,23 @@ class TrainSchedule:
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
+    def point_of_arrival(self):
+        """Пункт прибытия"""
+        while True:
+            try:
+                point_arrival = int(input("Введите номер пункта прибытия (Один из четырёх) : "))
+                if point_arrival > 4 or point_arrival <= 0:
+                    print("Неверное значение пункта. Их всего четыре. \n")
+
+                else:
+                    print(f"Выбран пункт оправления {point_arrival}")
+                    break
+            except ValueError:
+                print("Неверный ввод. Введите числовое значение\n")
+
     def travel_time(self, distance, speed):
         """Расчёт времени в пути"""
+        # Должно высчитываться автоматически
         try:
             time = float(distance / speed)  # Время = расстояние / скорость
             if time <= 0:
@@ -83,10 +98,11 @@ class TrainSchedule:
         except ZeroDivisionError:
             print("Скорость не может быть нулевым значением!")
 
-    # def parking_time(self):
-    #     """Расчёт времени стоянки"""
-    #     pass
 
+# def parking_time(self):
+    # """Расчёт времени стоянки"""
+    # Должно высчитываться автоматически.
+    #     pass
 
 ts = TrainSchedule()
 
