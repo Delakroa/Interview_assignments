@@ -14,7 +14,7 @@ class TrainSchedule:
 
                 else:
                     print(f"Выбран пункт оправления {point_departure}")
-                    break
+                    return point_departure
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
@@ -34,8 +34,7 @@ class TrainSchedule:
                     print("Некорректный ввод минут.\n")
 
                 else:
-                    print(
-                        f"\nВремя отправления поезда {d_time_hour}ч. : {d_time_minutes}мин.\n")
+                    print(f"\nВремя отправления поезда {d_time_hour}ч. : {d_time_minutes}мин.\n")
                     return d_time_hour
 
             except ValueError:
@@ -62,9 +61,7 @@ class TrainSchedule:
                 #     print("Неверный ввод данных. Время прибытия не может быть меньше времени отправления!\n")
 
                 else:
-                    print(
-                        f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
-
+                    print(f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
                     return a_time_hour
 
             except ValueError:
@@ -82,7 +79,7 @@ class TrainSchedule:
 
                 else:
                     print(f"Выбран пункт оправления {point_arrival}")
-                    break
+                    return point_arrival
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
@@ -112,6 +109,7 @@ class TrainSchedule:
 
 ts = TrainSchedule()
 
-# ts.control_point()
+ts.point_of_departure()
 # ts.departure_time()
-ts.arrival_time()
+# ts.departure_time()
+# ts.arrival_time()
