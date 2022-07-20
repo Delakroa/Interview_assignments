@@ -1,4 +1,3 @@
-"""Выполнение задания ТМХ"""
 
 
 class TrainSchedule:
@@ -56,9 +55,10 @@ class TrainSchedule:
                 elif a_time_minutes > 59 or a_time_minutes < 0:
                     print("Некорректный ввод минут.\n")
 
+                # Создание данной логики оставил на потом.
                 # Время отправленя не может быть < времени прибытия.
-                elif self.departure_time() >= a_time_hour:
-                    print("Неверный ввод данных. Время прибытия не может быть меньше времени!\n")
+                # elif self.departure_time() >= a_time_hour:
+                #     print("Неверный ввод данных. Время прибытия не может быть меньше времени отправления!\n")
 
                 else:
                     print(f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
