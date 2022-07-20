@@ -86,12 +86,13 @@ class TrainSchedule:
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
-    def parking_time(self):
+    def calculation_parking_time(self):
         """Расчёт времени стоянки на промежуточных станциях"""
         # Должно высчитываться автоматически.
+        # parking_time = 
         pass
 
-    def travel_time(self, distance, speed):
+    def calculating_travel_time(self, distance, speed):
         """Расчёт времени в пути между промежуточными станциями"""
         # Должно высчитываться автоматически
         try:
