@@ -86,30 +86,39 @@ class TrainSchedule:
     def calculation_parking_time(self):
         """Расчёт времени стоянки на промежуточных станциях"""
         # Должно высчитываться автоматически.
-        # parking_time = 
+        # parking_time = ещё не придумал
         pass
 
     def calculating_travel_time(self, distance, speed):
         """Расчёт времени в пути между промежуточными станциями"""
         # Должно высчитываться автоматически
+
+        # s - расстояние (м, км)
+        # v - скорость (м/сек, км/час.)
+        # t -время (сек, мин, часы)
+        # формула скорости v = s/t
+        # формула пути s = v * t - чтобы найти расстояние, нужно умножить скорость на время движения.
+        # формула времени t = s/v
+
         try:
-            time = float(distance / speed)  # Время = расстояние / скорость
+            time = int(distance / speed)  # Время = расстояние / скорость
             if time <= 0:
-                print(
-                    "Неверный вариант ввода данных: Дистанция не может быть нулевым значением")
+                print("Неверный вариант ввода данных: Дистанция не может быть нулевым значением")
 
             elif distance == 1:
                 print(f"Время прибытия {time * 60} минуты")
 
             else:
-                return print(f"Расчётное время прибытие: {time} часа.")
+                return print(f"Расчётное время прибытие: {time} часов.")
         except ZeroDivisionError:
             print("Скорость не может быть нулевым значением!")
 
 
 ts = TrainSchedule()
 
-ts.point_of_departure()
-# ts.departure_time()
+# ts.point_of_departure()
 # ts.departure_time()
 # ts.arrival_time()
+# ts.point_of_arrival()
+# ts.calculation_parking_time()
+ts.calculating_travel_time(distance=1300, speed=130)
