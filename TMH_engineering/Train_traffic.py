@@ -17,7 +17,7 @@ class TrainSchedule:
                 print("Неверный ввод. Введите числовое значение\n")
 
     @staticmethod
-    def departure_time(self):
+    def departure_time():
         """Установка времени отправления"""
         while True:
             try:
@@ -73,7 +73,7 @@ class TrainSchedule:
                 point_arrival = int(input("Введите номер пункта прибытия (от 1 до 4) : "))
                 if point_arrival > 4 or point_arrival <= 0:
                     print("Неверное значение пункта \n")
-                elif self.point_of_departure == point_arrival:
+                elif self.point_of_departure() == point_arrival:
                     print("Пункт отправления и пункт прибытия не должны быть равными")
 
                 else:
