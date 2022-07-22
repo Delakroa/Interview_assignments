@@ -7,9 +7,9 @@ class TrainSchedule:
         """Установка пункта отправления"""
         while True:
             try:
-                point_departure = int(input("Введите номер пункта отправления (Один из четырёх) : "))
+                point_departure = int(input("Введите номер пункта отправления (от 1 до 4) : "))
                 if point_departure > 4 or point_departure <= 0:
-                    print("Неверное значение пункта. Их всего четыре. \n")
+                    print("Неверное значение пункта. \n")
 
                 else:
                     print(f"Выбран пункт оправления {point_departure}")
