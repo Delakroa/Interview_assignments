@@ -1,18 +1,22 @@
 class TrainSchedule:
     """Создание класса расписания поездов"""
 
-    def point_of_departure(self):
-        """Установка пункта отправления"""
+    @staticmethod
+    def point_of_departure_and_arrival():
+        """Установка пункта отправления и пункта прибытия"""
         while True:
             try:
-                point_departure = int(input("Введите номер пункта отправления (от 1 до 4) : "))
+                point_departure, point_arrival = map(int, input(
+                    "Введите номер пункта отправления и прибытия через пробел (от 1 до 4) : ").split())
                 if point_departure > 4 or point_departure <= 0:
-                    print("Неверное значение пункта. \n")
-
+                    print("Неверное значение пункта отправления. \n")
+                elif point_arrival > 4 or point_arrival <= 0:
+                    print("Неверное значение пункта пункта прибытия. \n")
+                elif point_arrival <= point_departure:
+                    print("Время отправления, не может быть меньше или равный времени прибытия! \n")
                 else:
-                    print(f"Выбран пункт оправления {point_departure}\n")
+                    print(f"Установлен пункт оправления {point_departure}, прибытие {point_arrival}\n")
                     return point_departure
-
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
@@ -67,26 +71,6 @@ class TrainSchedule:
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
-    def point_of_arrival(self):
-        """Пункт прибытия"""
-        # Позже нужно будет реализовать логику( пункт отправления не может быть <= пункта прибытия)
-        while True:
-            try:
-                self.point_of_departure()
-                point_arrival = int(input("Введите номер пункта прибытия (от 1 до 4) : "))
-                if point_arrival > 4 or point_arrival <= 0:
-                    print("Неверное значение пункта \n")
-
-                # elif self. <= point_arrival:
-                    # print("Пункт отправления и пункт прибытия не должны быть равными")
-
-                else:
-                    print(f"Выбран пункт оправления {point_arrival}\n")
-                    return point_arrival
-
-            except ValueError:
-                print("Неверный ввод. Введите числовое значение\n")
-
     def calculation_parking_time(self):
         """Расчёт времени стоянки на промежуточных станциях"""
         # Должно высчитываться автоматически.
@@ -122,9 +106,9 @@ class TrainSchedule:
 
 ts = TrainSchedule()
 
-# ts.point_of_departure()
+ts.point_of_departure()
 # ts.departure_time()
 # ts.arrival_time()
-ts.point_of_arrival()
+# ts.point_of_arrival()
 # ts.calculation_parking_time()
 # ts.calculating_travel_time(distance=1300, speed=130)
