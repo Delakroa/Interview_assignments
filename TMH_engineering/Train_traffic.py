@@ -1,5 +1,8 @@
 class TrainSchedule:
-    """Создание класса расписания поездов"""
+    """Создание класса графика"""
+
+    def __init__(self):
+        self.d_time_minutes = None
 
     @staticmethod
     def point_of_departure_and_arrival():
@@ -20,52 +23,37 @@ class TrainSchedule:
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
-    @staticmethod
-    def departure_time():
+    def departure_time(self):
         """Установка времени отправления"""
         while True:
             try:
                 print("Укажите время отправления поезда")
-
-                d_time_hour, d_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
-
+                d_time_hour, self.d_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
                 if d_time_hour > 24 or d_time_hour < 0:
                     print("Некорректный ввод часов.\n")
-
-                elif d_time_minutes > 59 or d_time_minutes < 0:
+                elif self.d_time_minutes > 59 or self.d_time_minutes < 0:
                     print("Некорректный ввод минут.\n")
-
                 else:
-                    print(f"\nВремя отправления поезда {d_time_hour}ч. : {d_time_minutes}мин.\n")
-
+                    print(f"\nВремя отправления поезда {d_time_hour}ч. : {self.d_time_minutes}мин.\n")
                     return d_time_hour
-
             except ValueError:
                 print("Некорректный ввод. Введите числовое значение\n")
 
-    @staticmethod
-    def arrival_time():
+    def arrival_time(self):
         """Установка времени прибытия"""
         while True:
             try:
                 print("Установите время прибытия поезда")
-
                 a_time_hour, a_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
-
                 if a_time_hour > 24 or a_time_hour < 0:
                     print("Некорректный ввод часов.\n")
-
                 elif a_time_minutes > 59 or a_time_minutes < 0:
                     print("Некорректный ввод минут.\n")
-
-                # Создание данной логики оставил на потом.
-                # Время отправления не может быть < времени прибытия.
-                # elif self.departure_time() >= a_time_hour:
-                #     print("Неверный ввод данных. Время прибытия не может быть меньше времени отправления!\n")
-
+                # Время отправления не может быть <= времени прибытия.
+                elif self.d_time_minutes >= a_time_minutes:
+                    print("Неверный ввод данных. Время прибытия не может быть меньше или равным времени отправления!\n")
                 else:
                     print(f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
-
                     return a_time_hour
 
             except ValueError:
@@ -107,9 +95,8 @@ class TrainSchedule:
 
 ts = TrainSchedule()
 
-ts.point_of_departure_and_arrival()
-# ts.departure_time()
-# ts.arrival_time()
-# ts.point_of_arrival()
+# ts.point_of_departure_and_arrival()
+ts.departure_time()
+ts.arrival_time()
 # ts.calculation_parking_time()
 # ts.calculating_travel_time(distance=1300, speed=130)
