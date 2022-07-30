@@ -59,7 +59,7 @@ class TrainSchedule:
                     print("Некорректный ввод минут.\n")
 
                 # Создание данной логики оставил на потом.
-                # Время отправленя не может быть < времени прибытия.
+                # Время отправления не может быть < времени прибытия.
                 # elif self.departure_time() >= a_time_hour:
                 #     print("Неверный ввод данных. Время прибытия не может быть меньше времени отправления!\n")
 
@@ -77,7 +77,8 @@ class TrainSchedule:
         # parking_time = ещё не придумал
         pass
 
-    def calculating_travel_time(self, distance, speed):
+    @staticmethod
+    def calculating_travel_time(distance, speed):
         """Расчёт времени в пути между промежуточными станциями"""
         # Должно высчитываться автоматически
 
