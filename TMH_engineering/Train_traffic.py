@@ -2,6 +2,7 @@ class TrainSchedule:
     """Создание класса графика"""
 
     def __init__(self):
+        self.d_time_hour = None
         self.d_time_minutes = None
 
     @staticmethod
@@ -28,14 +29,14 @@ class TrainSchedule:
         while True:
             try:
                 print("Укажите время отправления поезда")
-                d_time_hour, self.d_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
-                if d_time_hour > 24 or d_time_hour < 0:
+                self.d_time_hour, self.d_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
+                if self.d_time_hour > 24 or self.d_time_hour < 0:
                     print("Некорректный ввод часов.\n")
                 elif self.d_time_minutes > 59 or self.d_time_minutes < 0:
                     print("Некорректный ввод минут.\n")
                 else:
-                    print(f"\nВремя отправления поезда {d_time_hour}ч. : {self.d_time_minutes}мин.\n")
-                    return d_time_hour
+                    print(f"\nВремя отправления поезда {self.d_time_hour}ч. : {self.d_time_minutes}мин.\n")
+                    return self.d_time_hour
             except ValueError:
                 print("Некорректный ввод. Введите числовое значение\n")
 
@@ -50,11 +51,15 @@ class TrainSchedule:
                 elif a_time_minutes > 59 or a_time_minutes < 0:
                     print("Некорректный ввод минут.\n")
                 # Время отправления не может быть <= времени прибытия.
-                elif self.d_time_minutes >= a_time_minutes:
+                elif self.d_time_hour >= a_time_hour:
                     print("Неверный ввод данных. Время прибытия не может быть меньше или равным времени отправления!\n")
                 else:
                     print(f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
-                    return a_time_hour
+                full_time_hours = a_time_hour - self.d_time_hour
+                full_time_minutes = a_time_minutes - self.d_time_minutes  # поправить логику с вычислением минут
+                print(f"Поезд ехал {full_time_hours} часов :{full_time_minutes} минут")
+                # время = время_отправления - время_прибытие
+                return a_time_hour
 
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
@@ -62,20 +67,20 @@ class TrainSchedule:
     def calculation_parking_time(self):
         """Расчёт времени стоянки на промежуточных станциях"""
         # Должно высчитываться автоматически.
-        # parking_time = ещё не придумал
+        # parking_time = что-то
         pass
 
     @staticmethod
     def calculating_travel_time(distance, speed):
-        """Расчёт времени в пути между промежуточными станциями"""
-        # Должно высчитываться автоматически
+        """Расчёт времени в пути между промежуточными станциями
+        Должно высчитываться автоматически
 
-        # s - расстояние (м, км)
-        # v - скорость (м/сек, км/час.)
-        # t -время (сек, мин, часы)
-        # формула скорости v = s/t
-        # формула пути s = v * t - чтобы найти расстояние, нужно умножить скорость на время движения.
-        # формула времени t = s/v
+        s - расстояние (м, км)
+        v - скорость (м/сек, км/час.)
+        t -время (сек, мин, часы)
+        формула скорости v = s/t
+        формула пути s = v * t - чтобы найти расстояние, нужно умножить скорость на время движения.
+        формула времени t = s/v"""
 
         try:
             time = int(distance / speed)  # Время = расстояние / скорость
