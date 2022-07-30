@@ -106,7 +106,7 @@ class TrainSchedule:
 
 ts = TrainSchedule()
 
-ts.point_of_departure()
+ts.point_of_departure_and_arrival()
 # ts.departure_time()
 # ts.arrival_time()
 # ts.point_of_arrival()
