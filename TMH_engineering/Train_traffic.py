@@ -4,6 +4,8 @@ class TrainSchedule:
     def __init__(self):
         self.d_time_hour = None
         self.d_time_minutes = None
+        self.a_time_hour = None
+        self.a_time_minutes = None
 
     @staticmethod
     def point_of_departure_and_arrival():
@@ -45,24 +47,29 @@ class TrainSchedule:
         while True:
             try:
                 print("Установите время прибытия поезда")
-                a_time_hour, a_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
-                if a_time_hour > 24 or a_time_hour < 0:
+                self.a_time_hour, self.a_time_minutes = map(int, input("Введите часы и минуты через пробел: ").split())
+                if self.a_time_hour > 24 or self.a_time_hour < 0:
                     print("Некорректный ввод часов.\n")
-                elif a_time_minutes > 59 or a_time_minutes < 0:
+                elif self.a_time_minutes > 59 or self.a_time_minutes < 0:
                     print("Некорректный ввод минут.\n")
-                # Время отправления не может быть <= времени прибытия.
-                elif self.d_time_hour >= a_time_hour:
+                elif self.d_time_hour >= self.a_time_hour:
                     print("Неверный ввод данных. Время прибытия не может быть меньше или равным времени отправления!\n")
                 else:
-                    print(f"\nВремя прибытия поезда в {a_time_hour}ч. : {a_time_minutes}мин.\n")
-                full_time_hours = a_time_hour - self.d_time_hour
-                full_time_minutes = a_time_minutes - self.d_time_minutes  # поправить логику с вычислением минут
-                print(f"Поезд ехал {full_time_hours} часов :{full_time_minutes} минут")
-                # время = время_отправления - время_прибытие
-                return a_time_hour
-
+                    print(f"\nВремя прибытия поезда в {self.a_time_hour}ч. : {self.a_time_minutes}мин.\n")
+                    return self.a_time_hour
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
+
+    def time_calculation(self):
+        """Расчет времени в пути"""
+        full_times = []  # Общение время
+        full_time_hours = self.a_time_hour - self.d_time_hour
+        full_times.append(full_time_hours)
+        full_time_minutes = self.a_time_minutes - self.d_time_minutes
+        full_times.append(full_time_minutes)
+        # print(type(full_times))
+        # print(full_times)
+        print(f"Поезд ехал {full_time_hours} часа : {full_time_minutes} минут")
 
     def calculation_parking_time(self):
         """Расчёт времени стоянки на промежуточных станциях"""
@@ -103,5 +110,6 @@ ts = TrainSchedule()
 # ts.point_of_departure_and_arrival()
 ts.departure_time()
 ts.arrival_time()
+ts.time_calculation()
 # ts.calculation_parking_time()
 # ts.calculating_travel_time(distance=1300, speed=130)
