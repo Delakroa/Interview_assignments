@@ -2,6 +2,7 @@ class TrainSchedule:
     """Создание класса графика"""
 
     def __init__(self):
+        """Инициализация атрибутов класса"""
         self.d_time_hour = None
         self.d_time_minutes = None
         self.a_time_hour = None
