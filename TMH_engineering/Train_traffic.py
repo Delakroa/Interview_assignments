@@ -3,29 +3,38 @@ class TrainSchedule:
 
     def __init__(self):
         """Инициализация атрибутов класса"""
+        self.point_departure = None
+        self.point_arrival = None
+        self.final_destination = None
         self.d_time_hour = None
         self.d_time_minutes = None
         self.a_time_hour = None
         self.a_time_minutes = None
+        self.full_time_hours = None
+        self.full_time_minutes = None
 
-    @staticmethod
-    def point_of_departure_and_arrival():
+    def point_of_departure_and_arrival(self):
         """Установка пункта отправления и пункта прибытия"""
         while True:
             try:
-                point_departure, point_arrival = map(int, input(
+                self.point_departure, self.point_arrival = map(int, input(
                     "Введите номер пункта отправления и прибытия через пробел (от 1 до 4) : ").split())
-                if point_departure > 4 or point_departure <= 0:
+                if self.point_departure > 4 or self.point_departure <= 0:
                     print("Неверное значение пункта отправления. \n")
-                elif point_arrival > 4 or point_arrival <= 0:
+                elif self.point_arrival > 4 or self.point_arrival <= 0:
                     print("Неверное значение пункта прибытия. \n")
-                elif point_arrival <= point_departure:
+                elif self.point_arrival <= self.point_departure:
                     print("Время отправления, не может быть меньше или равный времени прибытия! \n")
                 else:
-                    print(f"Установлен пункт оправления {point_departure}, прибытие {point_arrival}\n")
-                    return point_departure
+                    print(f"Установлен пункт оправления {self.point_departure}, прибытие {self.point_arrival}\n")
+                    return self.point_departure
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
+
+    def point_calculation(self):
+        """Расчёт пункта назначения"""
+        self.final_destination = int(self.point_arrival - self.point_departure)
+        return self.final_destination
 
     def departure_time(self):
         """Установка времени отправления"""
@@ -63,12 +72,10 @@ class TrainSchedule:
 
     def time_calculation(self):
         """Расчет времени в пути"""
-        full_times = []
-        full_time_hours = int(self.a_time_hour - self.d_time_hour)
-        full_times.append(full_time_hours)
-        full_time_minutes = int(self.a_time_minutes - self.d_time_minutes)
-        full_times.append(full_time_minutes)
-        print(f"Поезд ехал {full_time_hours} часа : {full_time_minutes} минут")
+        self.full_time_hours = int(self.a_time_hour - self.d_time_hour)
+        self.full_time_minutes = int(self.a_time_minutes - self.d_time_minutes)
+        print(f"Поезд ехал {self.full_time_hours} часа : {self.full_time_minutes} минут")
+        return self.full_time_hours
 
     def calculation_parking_time(self):
         """Расчёт времени стоянки на промежуточных станциях"""
@@ -76,39 +83,24 @@ class TrainSchedule:
         # Parking_time = что-то
         pass
 
-    @staticmethod
-    def calculating_travel_time(distance, speed):
-        """Расчёт времени в пути между промежуточными станциями
-        Должно высчитываться автоматически
-
-        S - расстояние (м, км)
-        v - скорость (м/сек, км/час.)
-        t -время (сек, мин, часы)
-        формула скорости v = s/t
-        формула пути s = v * t - чтобы найти расстояние, нужно умножить скорость на время движения.
-        Формула времени t = s/v """
-
-        try:
-            time = int(distance / speed)  # Время = расстояние / скорость
-            if time <= 0:
-                print("Неверный вариант ввода данных: Дистанция не может быть нулевым значением")
-
-            elif distance == 1:
-                print(f"Время прибытия {time * 60} минуты")
-
-            else:
-                print(f"Расчётное время прибытие: {time} часов.")
-                return time
-
-        except ZeroDivisionError:
-            print("Скорость не может быть нулевым значением!")
+    def calculating_travel_time(self):
+        """Расчёт времени в пути между промежуточными станциями"""
+        # Должно высчитываться автоматически
+        intermediate_hours = int(self.full_time_hours / self.final_destination)  # Часы делим на пункт назначения
+        intermediate_minute = float(self.full_time_minutes / self.final_destination) * 60
+        if self.final_destination <= 1:
+            print(f"Промежуточные станции отсутствуют.")
+        else:
+            print(f"Расчётное время в пути между станциями {intermediate_hours} часа(ов) "
+                  f"{int(intermediate_minute)} минут.")
 
 
 ts = TrainSchedule()
 
-# ts.point_of_departure_and_arrival()
+ts.point_of_departure_and_arrival()
+ts.point_calculation()
 ts.departure_time()
 ts.arrival_time()
 ts.time_calculation()
-# ts.calculation_parking_time()
-# ts.calculating_travel_time(distance=1300, speed=130)
+ts.calculation_parking_time()
+ts.calculating_travel_time()
