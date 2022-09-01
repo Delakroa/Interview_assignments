@@ -62,7 +62,7 @@ class TrainSchedule:
                     print("Некорректный ввод часов.\n")
                 elif self.a_time_minutes > 59 or self.a_time_minutes < 0:
                     print("Некорректный ввод минут.\n")
-                elif self.d_time_hour >= self.a_time_hour:
+                elif self.d_time_hour > self.a_time_hour:
                     print("Неверный ввод данных. Время прибытия не может быть меньше или равным времени отправления!\n")
                 else:
                     print(f"\nВремя прибытия поезда в {self.a_time_hour}ч. : {self.a_time_minutes}мин.\n")
