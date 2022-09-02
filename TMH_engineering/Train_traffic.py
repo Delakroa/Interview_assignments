@@ -27,12 +27,12 @@ class TrainSchedule:
                     print("Время отправления, не может быть меньше или равный времени прибытия! \n")
                 else:
                     print(f"Установлен пункт оправления {self.point_departure}, прибытие {self.point_arrival}\n")
-                    return self.point_departure
+                    return self.point_departure, self.point_arrival
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
     def point_calculation(self):
-        """Расчёт пункта назначения"""
+        """Высчитываем количество промежутков между пунктами назначения"""
         self.final_destination = int(self.point_arrival - self.point_departure)
         return self.final_destination
 
@@ -48,7 +48,7 @@ class TrainSchedule:
                     print("Некорректный ввод минут.\n")
                 else:
                     print(f"\nВремя отправления поезда {self.d_time_hour}ч. : {self.d_time_minutes}мин.\n")
-                    return self.d_time_hour
+                    return self.d_time_hour, self.d_time_minutes
             except ValueError:
                 print("Некорректный ввод. Введите числовое значение\n")
 
@@ -66,7 +66,7 @@ class TrainSchedule:
                     print("Неверный ввод данных. Время прибытия не может быть меньше или равным времени отправления!\n")
                 else:
                     print(f"\nВремя прибытия поезда в {self.a_time_hour}ч. : {self.a_time_minutes}мин.\n")
-                    return self.a_time_hour
+                    return self.a_time_hour, self.a_time_minutes
             except ValueError:
                 print("Неверный ввод. Введите числовое значение\n")
 
@@ -74,8 +74,8 @@ class TrainSchedule:
         """Расчет времени в пути"""
         self.full_time_hours = int(self.a_time_hour - self.d_time_hour)
         self.full_time_minutes = int(self.a_time_minutes - self.d_time_minutes)
-        print(f"Поезд ехал {self.full_time_hours} часа : {self.full_time_minutes} минут")
-        return self.full_time_hours
+        print(f"Поезд ехал: {self.full_time_hours} часа : {self.full_time_minutes} минут")
+        return self.full_time_hours, self.full_time_minutes
 
     def calculation_parking_time(self):
         """Расчёт времени стоянки на промежуточных станциях"""
@@ -87,12 +87,12 @@ class TrainSchedule:
         """Расчёт времени в пути между промежуточными станциями"""
         # Должно высчитываться автоматически
         intermediate_hours = int(self.full_time_hours / self.final_destination)  # Часы делим на пункт назначения
-        intermediate_minute = float(self.full_time_minutes / self.final_destination) * 60
+        intermediate_minute = round(self.full_time_minutes / self.final_destination, 1)
         if self.final_destination <= 1:
             print(f"Промежуточные станции отсутствуют.")
         else:
             print(f"Расчётное время в пути между станциями {intermediate_hours} часа(ов) "
-                  f"{int(intermediate_minute)} минут.")
+                  f"{intermediate_minute} минут.")
 
 
 ts = TrainSchedule()
