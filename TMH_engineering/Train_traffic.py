@@ -1,3 +1,47 @@
+import sqlite3
+from sqlite3 import Error
+
+
+def sql_connection():
+    """Подключаемся к нашей БД"""
+    try:
+        con = sqlite3.connect('mydatabase.db')
+
+        return con
+
+    except Error:
+        print(Error)
+
+
+def sql_table(con):
+    """Создаём таблицу"""
+    try:
+        cursorOdj = con.cursor()
+
+        cursorOdj.execute("CREATE TABLE timetable"
+                          "(id integer PRIMARY KEY AUTOINCREMENT,"
+                          " points_of_departure_and_arriva,"
+                          " departure_time text,"
+                          " arrival_time text,"
+                          " travel_time text,"
+                          " time_between_stops text)")
+        con.commit()
+    except sqlite3.OperationalError:
+        print("Таблица уже создана!")
+
+
+def sql_insert(con, entities):
+    """Добавление данных в таблицу"""
+
+    cursorObj = con.cursor()
+
+    cursorObj.execute(
+        "INSERT INTO timetable(points_of_departure_and_arriva, "
+        "departure_time, arrival_time, travel_time, time_between_stops)")
+
+    con.commit()
+
+
 class TrainSchedule:
     """Создание класса графика"""
 
@@ -93,14 +137,19 @@ class TrainSchedule:
         else:
             print(f"Расчётное время в пути между станциями {intermediate_hours} часа(ов) "
                   f"{intermediate_minute} минут.")
+            return intermediate_hours, intermediate_minute
 
 
 ts = TrainSchedule()
-
-ts.point_of_departure_and_arrival()
+tspodaa = ts.point_of_departure_and_arrival()
 ts.point_calculation()
-ts.departure_time()
-ts.arrival_time()
-ts.time_calculation()
-ts.calculation_parking_time()
-ts.calculating_travel_time()
+tdt = ts.departure_time()
+tat = ts.arrival_time()
+ttc = ts.time_calculation()
+# ts.calculation_parking_time()
+tctt = ts.calculating_travel_time()
+
+entities = (tspodaa, tdt, tat, ttc, tctt)
+con = sql_connection()
+# sql_table(con)
+sql_insert(con, entities)
