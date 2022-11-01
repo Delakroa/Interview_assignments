@@ -16,9 +16,9 @@ def sql_connection():
 def sql_table(con):
     """Создаём таблицу"""
     try:
-        cursorOdj = con.cursor()
+        cursorObj = con.cursor()
 
-        cursorOdj.execute("CREATE TABLE timetable"
+        cursorObj.execute("CREATE TABLE timetable"
                           "(id integer PRIMARY KEY AUTOINCREMENT,"
                           " points_of_departure_and_arriva,"
                           " departure_time text,"
@@ -135,8 +135,7 @@ class TrainSchedule:
         if self.final_destination <= 1:
             print(f"Промежуточные станции отсутствуют.")
         else:
-            print(f"Расчётное время в пути между станциями {intermediate_hours} часа(ов) "
-                  f"{intermediate_minute} минут.")
+            print(f"Расчётное время в пути между станциями {intermediate_hours} часа(ов) {intermediate_minute} минут.")
             return intermediate_hours, intermediate_minute
 
 
